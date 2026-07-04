@@ -1,1 +1,25 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9OUA5P6p)
+# DengueReporte CR - Avance 2
+
+Frontend del proyecto final para SC-502 Ambiente Web Cliente Servidor.
+
+## Parte desarrollada por Juan Solano
+
+- `brigadista/asignaciones.html`
+- `brigadista/registrar-accion.html`
+- `admin/estadisticas.html`
+
+## Estilo visual
+
+Se trabajó una línea más institucional, inspirada en portales públicos costarricenses: barra superior, encabezado con buscador, menú azul, tarjetas informativas, filtros claros y footer.
+
+
+
+## Datos
+
+Por ahora no hay conexión con MySQL. Los datos están en:
+
+- `js/datos.js`
+
+El formulario de acciones usa `localStorage` para simular cambios durante la prototipo.
+
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asignaciones | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="#">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de brigadista</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar caso asignado">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Juan Solano</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a class="active" href="asignaciones.html">Asignaciones</a>
+          <a href="registrar-accion.html">Registrar acción</a>
+          <a href="../admin/estadisticas.html">Estadísticas</a>
+        </div>
+        <span class="nav-note">Seguimiento de campo</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Brigadista · Seguimiento de campo</span>
+        <h1>Mis asignaciones</h1>
+        <p>Casos asignados para revisión en campo, con filtros rápidos y mapa para ubicar cada punto reportado.</p>
+      </div>
+      <a class="btn btn-glow" href="registrar-accion.html">Registrar acción</a>
+    </section>
+
+    <section id="resumenAsignaciones" class="stats-grid reveal delay-1"></section>
+
+    <section class="card panel-card reveal delay-2">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Bandeja de trabajo</span>
+            <h2>Casos asignados</h2>
+            <p>Seleccione un caso para consultar el detalle y su ubicación.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroEstado">Estado</label>
+            <select id="filtroEstado">
+              <option value="todos">Todos</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Asignado">Asignado</option>
+              <option value="En atención">En atención</option>
+              <option value="Resuelto">Resuelto</option>
+              <option value="Rechazado">Rechazado</option>
+            </select>
+          </div>
+          <div class="field compact-field">
+            <label for="filtroPrioridad">Prioridad</label>
+            <select id="filtroPrioridad">
+              <option value="todas">Todas</option>
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid dashboard-grid-wide">
+        <div class="table-wrap smart-table">
+          <table id="tablaAsignaciones">
+            <thead>
+              <tr>
+                <th>Caso</th>
+                <th>Zona</th>
+                <th>Tipo</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <aside class="map-card sticky-card">
+          <div class="map-head">
+            <div>
+              <span class="eyebrow">Punto de atención</span>
+              <h2>Ubicación del caso</h2>
+            </div>
+            <span class="map-chip">Leaflet</span>
+          </div>
+          <div id="mapaCaso"></div>
+          <div id="detalleCaso" class="detail-card"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Seguimiento de campo con datos de prueba para el Avance 2.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="asignaciones.html">Asignaciones</a>
+        <a href="registrar-accion.html">Registrar acción</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Datos locales para revisión del frontend.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/datos.js"></script>
+  <script src="../js/asignaciones.js"></script>
+</body>
+</html>

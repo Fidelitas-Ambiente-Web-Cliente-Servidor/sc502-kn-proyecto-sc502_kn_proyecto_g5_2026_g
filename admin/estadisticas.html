@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="#">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel administrativo</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar zona o reporte">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Indicadores</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="../brigadista/asignaciones.html">Asignaciones</a>
+          <a href="../brigadista/registrar-accion.html">Registrar acción</a>
+          <a class="active" href="estadisticas.html">Estadísticas</a>
+        </div>
+        <span class="nav-note">Inteligencia sanitaria</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Administrador · Inteligencia sanitaria</span>
+        <h1>Panel de estadísticas</h1>
+        <p>Vista general de los reportes por tipo, estado, mes y zona, calculada desde los datos locales del prototipo.</p>
+      </div>
+      <button id="btnExportar" class="btn btn-glow" type="button">Exportar CSV</button>
+    </section>
+
+    <section class="card panel-card reveal delay-1">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Filtros</span>
+            <h2>Lectura rápida</h2>
+            <p>Filtre por zona o mes para revisar el comportamiento de los reportes.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroZona">Zona</label>
+            <select id="filtroZona"></select>
+          </div>
+          <div class="field compact-field">
+            <label for="filtroMes">Mes</label>
+            <select id="filtroMes"></select>
+          </div>
+        </div>
+      </div>
+
+      <div id="resumenEstadisticas" class="stats-grid"></div>
+
+      <div class="insight-grid">
+        <article class="insight-card">
+          <span class="eyebrow">Zona crítica</span>
+          <h3 id="zonaCritica">Cargando...</h3>
+          <p>Zona con mayor cantidad de reportes según el filtro actual.</p>
+        </article>
+
+        <article class="insight-card">
+          <span class="eyebrow">Lectura del sistema</span>
+          <h3 id="lecturaSistema">Cargando...</h3>
+          <p id="detalleLectura">Espere un momento.</p>
+        </article>
+      </div>
+
+      <div class="insight-grid">
+        <article class="insight-card">
+          <span class="eyebrow">Ranking de zonas</span>
+          <h3>Frecuencia de reportes</h3>
+          <div id="rankingZonas" class="ranking-list"></div>
+        </article>
+
+        <article class="insight-card">
+          <span class="eyebrow">Nota de avance</span>
+          <h3>Datos simulados</h3>
+          <p>Los indicadores se calculan desde la estructura local de datos y reflejan las acciones guardadas durante la sesión de prueba.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="chart-grid reveal delay-2">
+      <article class="chart-card">
+        <canvas id="chartTipo"></canvas>
+      </article>
+      <article class="chart-card">
+        <canvas id="chartEstado"></canvas>
+      </article>
+      <article class="chart-card">
+        <canvas id="chartMes"></canvas>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Panel estadístico para apoyar la toma de decisiones sanitarias.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="../brigadista/asignaciones.html">Asignaciones</a>
+        <a href="../brigadista/registrar-accion.html">Registrar acción</a>
+      </div>
+      <div>
+        <h4>Exportación</h4>
+        <p>El botón CSV descarga la muestra filtrada actual.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/datos.js"></script>
+  <script src="../js/estadisticas.js"></script>
+</body>
+</html>

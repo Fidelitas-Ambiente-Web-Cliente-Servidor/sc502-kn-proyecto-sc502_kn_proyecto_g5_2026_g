@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar acción | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="#">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Registro de atención en campo</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar caso o zona">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Registro de campo</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="asignaciones.html">Asignaciones</a>
+          <a class="active" href="registrar-accion.html">Registrar acción</a>
+          <a href="../admin/estadisticas.html">Estadísticas</a>
+        </div>
+        <span class="nav-note">Bitácora de campo</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Brigadista · Registro rápido</span>
+        <h1>Registrar acción de campo</h1>
+        <p>Registre visitas, fumigaciones o resoluciones asociadas a los casos asignados. Los datos se mantienen de forma local durante el prototipo.</p>
+      </div>
+      <a class="btn secondary" href="asignaciones.html">Volver a asignaciones</a>
+    </section>
+
+    <section class="card panel-card reveal delay-1">
+      <div class="form-layout">
+        <form id="formAccion" novalidate class="action-form">
+          <div class="step-strip" aria-label="Pasos del registro">
+            <span class="step active"><b>1</b> Caso</span>
+            <span class="step"><b>2</b> Acción</span>
+            <span class="step"><b>3</b> Evidencia</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="casoId">Caso asignado</label>
+              <select id="casoId" required></select>
+            </div>
+
+            <div class="field">
+              <label for="tipoAccion">Tipo de acción</label>
+              <select id="tipoAccion" required>
+                <option value="">Seleccione</option>
+                <option value="Visita">Visita</option>
+                <option value="Fumigación">Fumigación</option>
+                <option value="Resolución">Resolución</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="fechaAccion">Fecha</label>
+              <input type="date" id="fechaAccion" required>
+            </div>
+
+            <div class="field">
+              <label for="estadoResultado">Estado del caso</label>
+              <select id="estadoResultado" required>
+                <option value="">Seleccione</option>
+                <option value="Asignado">Asignado</option>
+                <option value="En atención">En atención</option>
+                <option value="Resuelto">Resuelto</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="descripcionAccion">Descripción de lo realizado</label>
+              <textarea id="descripcionAccion" placeholder="Ejemplo: se visitó la vivienda, se eliminó el criadero y se explicó la prevención al vecino." required></textarea>
+            </div>
+
+            <div class="field full upload-zone">
+              <label for="evidencia">Evidencia fotográfica</label>
+              <input type="file" id="evidencia" accept="image/*">
+              <small id="archivoNombre">Puede adjuntar una foto si la tiene disponible.</small>
+            </div>
+          </div>
+
+          <div id="mensajeForm" class="alert"></div>
+
+          <div class="actions-row form-actions">
+            <button class="btn btn-glow" type="submit">Guardar acción</button>
+            <button class="btn secondary" type="reset">Limpiar</button>
+          </div>
+        </form>
+
+        <aside class="detail-card case-preview">
+          <span class="eyebrow">Vista previa</span>
+          <h2>Detalle del caso</h2>
+          <div id="detalleCasoForm"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card panel-card reveal delay-2">
+      <div class="section-title compact-title">
+        <div>
+          <span class="eyebrow">Bitácora</span>
+          <h2>Historial de acciones</h2>
+          <p>Las acciones registradas se conservan temporalmente en el navegador para esta versión del frontend.</p>
+        </div>
+      </div>
+      <div id="historialAcciones" class="timeline-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Formulario de seguimiento de campo para el módulo de Juan.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="asignaciones.html">Asignaciones</a>
+        <a href="../admin/estadisticas.html">Estadísticas</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Los cambios se guardan localmente en el navegador.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/registrar-accion.js"></script>
+</body>
+</html>

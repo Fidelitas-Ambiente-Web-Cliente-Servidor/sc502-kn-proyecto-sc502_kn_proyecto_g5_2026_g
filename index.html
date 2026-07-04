@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DengueReporte CR | Avance 2</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="#">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="#">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="#">Registrarse</a>
+          <span>|</span>
+          <a class="gov-link" href="#">Ingresar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Reporte y seguimiento de plagas urbanas</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar módulo o trámite">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Avance 2</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a class="active" href="index.html">Inicio</a>
+          <a href="brigadista/asignaciones.html">Seguimiento de campo</a>
+          <a href="brigadista/registrar-accion.html">Registrar acción</a>
+          <a href="admin/estadisticas.html">Estadísticas</a>
+        </div>
+        <span class="nav-note">Frontend en revisión</span>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero hero-home">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <span class="tag">Prototipo frontend</span>
+        <h1>Sistema para la gestión de reportes sanitarios</h1>
+        <p>Acceso de revisión para los módulos de seguimiento de campo, registro de acciones y consulta estadística del proyecto DengueReporte CR.</p>
+        <div class="hero-actions">
+          <a class="btn btn-glow" href="brigadista/asignaciones.html">Consultar asignaciones</a>
+          <a class="btn ghost" href="admin/estadisticas.html">Panel estadístico</a>
+        </div>
+      </div>
+
+      <aside class="hero-dashboard reveal delay-1" aria-label="Resumen del avance">
+        <div class="pulse-card">
+          <div>
+            <small>Estado del avance</small>
+            <strong>Prototipo disponible</strong>
+          </div>
+          <span class="live-dot"></span>
+        </div>
+        <div class="mini-map">
+          <span class="pin p1"></span>
+          <span class="pin p2"></span>
+          <span class="pin p3"></span>
+          <span class="scan-line"></span>
+        </div>
+        <div class="metric-row">
+          <div><strong>3</strong><small>vistas activas</small></div>
+          <div><strong>7</strong><small>reportes base</small></div>
+          <div><strong>JS</strong><small>datos locales</small></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main class="container section">
+    <section class="card panel-card reveal delay-2">
+      <div class="section-title compact-title">
+        <div>
+          <span class="eyebrow">Accesos principales</span>
+          <h2>Índice de módulos del Avance 2</h2>
+          <p>Accesos organizados por responsable para facilitar la integración del repositorio grupal.</p>
+        </div>
+      </div>
+
+      <div class="module-grid module-grid-home">
+        <article class="module-card locked">
+          <span class="owner">Allison</span>
+          <div class="module-icon">01</div>
+          <h3>Autenticación y administración</h3>
+          <p>Inicio de sesión, panel administrativo y usuarios.</p>
+          <small>Pendiente de integración</small>
+        </article>
+
+        <article class="module-card locked">
+          <span class="owner">Valery</span>
+          <div class="module-icon">02</div>
+          <h3>Reportes ciudadanos</h3>
+          <p>Registro de reportes, seguimiento y notificaciones.</p>
+          <small>Pendiente de integración</small>
+        </article>
+
+        <article class="module-card locked">
+          <span class="owner">Emmanuel</span>
+          <div class="module-icon">03</div>
+          <h3>Gestión de casos y brigadas</h3>
+          <p>Validación, asignación y control de zonas de riesgo.</p>
+          <small>Pendiente de integración</small>
+        </article>
+
+        <article class="module-card active-card featured">
+          <span class="owner">Juan</span>
+          <div class="module-icon">04</div>
+          <h3>Seguimiento de campo</h3>
+          <p>Consulta de casos asignados, prioridad, estado y ubicación.</p>
+          <div class="link-list">
+            <a href="brigadista/asignaciones.html">Ver asignaciones</a>
+            <a href="brigadista/registrar-accion.html">Registrar acción</a>
+          </div>
+        </article>
+
+        <article class="module-card active-card featured">
+          <span class="owner">Juan</span>
+          <div class="module-icon">05</div>
+          <h3>Estadísticas</h3>
+          <p>Indicadores por tipo, estado, mes y zona con exportación CSV.</p>
+          <div class="link-list">
+            <a href="admin/estadisticas.html">Abrir panel</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Proyecto académico para el curso SC-502 Ambiente Web Cliente Servidor.</p>
+      </div>
+      <div>
+        <h4>Módulos Juan</h4>
+        <a href="brigadista/asignaciones.html">Asignaciones</a>
+        <a href="brigadista/registrar-accion.html">Registrar acción</a>
+        <a href="admin/estadisticas.html">Estadísticas</a>
+      </div>
+      <div>
+        <h4>Entrega</h4>
+        <p>Avance 2 · Frontend con datos locales.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
