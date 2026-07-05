@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandeja de Casos | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de inspector</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" id="buscadorGlobal" placeholder="Buscar reporte por ID o ciudadano">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Emmanuel Montoya</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a class="active" href="bandeja.html">Bandeja de casos</a>
+          <a href="brigadas.html">Gestión de brigadas</a>
+          <a href="zonas.html">Zonas de riesgo</a>
+        </div>
+        <span class="nav-note">Gestión de casos</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Inspector · Gestión de casos</span>
+        <h1>Bandeja de casos</h1>
+        <p>Revisá, validá y asigná los reportes recibidos. Filtrá por estado o prioridad para organizar el trabajo.</p>
+      </div>
+    </section>
+
+    <!-- Stats rápidas -->
+    <section id="resumenBandeja" class="stats-grid reveal delay-1"></section>
+
+    <!-- Tabla + panel de acción -->
+    <section class="card panel-card reveal delay-2">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Reportes recibidos</span>
+            <h2>Casos pendientes de gestión</h2>
+            <p>Seleccioná un caso para validarlo, asignarle prioridad y delegarlo a un brigadista.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroEstado">Estado</label>
+            <select id="filtroEstado">
+              <option value="todos">Todos</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Asignado">Asignado</option>
+              <option value="En atención">En atención</option>
+              <option value="Resuelto">Resuelto</option>
+              <option value="Rechazado">Rechazado</option>
+            </select>
+          </div>
+          <div class="field compact-field">
+            <label for="filtroPrioridad">Prioridad</label>
+            <select id="filtroPrioridad">
+              <option value="todas">Todas</option>
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </div>
+          <div class="field compact-field">
+            <label for="filtroZona">Zona</label>
+            <select id="filtroZona">
+              <option value="todas">Todas</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de casos -->
+      <div class="table-wrap smart-table">
+        <table id="tablaCasos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ciudadano</th>
+              <th>Zona</th>
+              <th>Tipo</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Panel de detalle / asignación (oculto hasta seleccionar un caso) -->
+    <section class="card panel-card reveal" id="panelDetalle" style="display:none;">
+      <div class="tool-strip" style="margin-bottom:0;">
+        <div>
+          <span class="eyebrow">Caso seleccionado</span>
+          <h2 id="detalleTitulo" style="margin:6px 0 4px; color:var(--azul-oscuro);">—</h2>
+        </div>
+        <button class="btn secondary" onclick="cerrarDetalle()">✕ Cerrar</button>
+      </div>
+
+      <div style="height:1px; background:var(--linea); margin:18px 0;"></div>
+
+      <div class="dashboard-grid">
+        <!-- Info del reporte -->
+        <div>
+          <div class="detail-list" style="margin-bottom:16px;">
+            <div><strong>Ciudadano</strong><p id="dCiudadano" style="margin:4px 0 0; color:var(--muted);"></p></div>
+            <div><strong>Tipo de foco</strong><p id="dTipo" style="margin:4px 0 0; color:var(--muted);"></p></div>
+            <div><strong>Zona</strong><p id="dZona" style="margin:4px 0 0; color:var(--muted);"></p></div>
+            <div><strong>Fecha</strong><p id="dFecha" style="margin:4px 0 0; color:var(--muted);"></p></div>
+          </div>
+          <div class="field full" style="margin-bottom:14px;">
+            <label>Descripción del reporte</label>
+            <textarea id="dDescripcion" class="form-control" rows="3" readonly style="background:#f4f7fb; border:1px solid var(--linea); border-radius:6px; padding:10px; resize:none; color:var(--texto); width:100%;"></textarea>
+          </div>
+        </div>
+
+        <!-- Formulario de gestión -->
+        <div class="case-preview">
+          <span class="eyebrow" style="margin-bottom:14px; display:block;">Gestionar caso</span>
+
+          <div class="field" style="margin-bottom:14px;">
+            <label for="selPrioridad">Prioridad</label>
+            <select id="selPrioridad">
+              <option value="Baja">Baja</option>
+              <option value="Media" selected>Media</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+
+          <div class="field" style="margin-bottom:6px;">
+            <label for="selBrigadista">Asignar a brigadista</label>
+            <select id="selBrigadista">
+              <option value="">— Seleccioná un brigadista —</option>
+            </select>
+          </div>
+          <p id="errorBrigadista" style="color:var(--rojo); font-size:.82rem; min-height:16px; margin:4px 0 14px;"></p>
+
+          <div id="alertaDetalle" class="alert"></div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-glow" onclick="asignarCaso()">✅ Validar y asignar</button>
+            <button class="btn" style="background:var(--rojo);" onclick="rechazarCaso()">✕ Rechazar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen -->
+    <div class="resumen-box reveal delay-2" id="resumenInspector" style="margin-top:8px;"></div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Gestión de casos para inspectores municipales.</p>
+      </div>
+      <div>
+        <h4>Módulos</h4>
+        <a href="bandeja.html">Bandeja de casos</a>
+        <a href="brigadas.html">Gestión de brigadas</a>
+        <a href="zonas.html">Zonas de riesgo</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Datos locales para revisión del frontend.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/bandeja.js"></script>
+</body>
+</html>

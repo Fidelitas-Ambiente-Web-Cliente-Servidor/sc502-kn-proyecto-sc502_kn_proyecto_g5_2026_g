@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zonas de Riesgo | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    #mapaZonas { min-height: 440px; border-radius: 6px; border: 1px solid var(--linea); background: #e9f3ff; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de inspector</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar zona">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">Emmanuel Montoya</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="bandeja.html">Bandeja de casos</a>
+          <a href="brigadas.html">Gestión de brigadas</a>
+          <a class="active" href="zonas.html">Zonas de riesgo</a>
+        </div>
+        <span class="nav-note">Zonas de riesgo</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Inspector · Zonas</span>
+        <h1>Zonas de riesgo</h1>
+        <p>Mapa de concentración de reportes por zona. Identificá los sectores con mayor incidencia para priorizar recursos.</p>
+      </div>
+    </section>
+
+    <!-- Stats por zona -->
+    <section id="statsZonas" class="stats-grid reveal delay-1"></section>
+
+    <!-- Mapa + tabla lateral -->
+    <section class="card panel-card reveal delay-2">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Distribución geográfica</span>
+            <h2>Mapa de reportes</h2>
+            <p>Cada marcador representa un reporte. El color indica la prioridad del caso.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroTipoZona">Tipo de foco</label>
+            <select id="filtroTipoZona">
+              <option value="todos">Todos</option>
+              <option value="Dengue">Dengue</option>
+              <option value="Roedores">Roedores</option>
+              <option value="Cucarachas">Cucarachas</option>
+              <option value="Agua estancada">Agua estancada</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="field compact-field">
+            <label for="filtroEstadoZona">Estado</label>
+            <select id="filtroEstadoZona">
+              <option value="todos">Todos</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Asignado">Asignado</option>
+              <option value="En atención">En atención</option>
+              <option value="Resuelto">Resuelto</option>
+              <option value="Rechazado">Rechazado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid dashboard-grid-wide">
+        <!-- Mapa -->
+        <div>
+          <div id="mapaZonas"></div>
+          <p style="margin-top:10px; font-size:.82rem; color:var(--muted);">
+            🔴 Alta prioridad &nbsp; 🟡 Media prioridad &nbsp; 🟢 Baja prioridad
+          </p>
+        </div>
+
+        <!-- Ranking de zonas -->
+        <aside class="map-card sticky-card">
+          <div class="map-head">
+            <div>
+              <span class="eyebrow">Concentración</span>
+              <h2>Reportes por zona</h2>
+            </div>
+          </div>
+          <div class="ranking-list" id="rankingZonas"></div>
+
+          <div style="height:1px; background:var(--linea); margin:18px 0;"></div>
+
+          <!-- Detalle del marcador seleccionado -->
+          <div id="detalleMarker">
+            <span class="eyebrow" style="display:block; margin-bottom:10px;">Seleccioná un marcador</span>
+            <p style="color:var(--muted); font-size:.88rem;">Hacé clic en cualquier marcador del mapa para ver el detalle del reporte.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Tabla de zonas con totales -->
+    <section class="card panel-card reveal delay-2">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Resumen por zona</span>
+          <h2>Incidencias registradas por sector</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="tablaZonas">
+          <thead>
+            <tr>
+              <th>Zona</th>
+              <th>Total reportes</th>
+              <th>Pendientes</th>
+              <th>En atención</th>
+              <th>Resueltos</th>
+              <th>Prioridad predominante</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Resumen -->
+    <div class="resumen-box reveal delay-2" id="resumenZonas" style="margin-top:8px;"></div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Mapa de zonas de riesgo para inspectores municipales.</p>
+      </div>
+      <div>
+        <h4>Módulos</h4>
+        <a href="bandeja.html">Bandeja de casos</a>
+        <a href="brigadas.html">Gestión de brigadas</a>
+        <a href="zonas.html">Zonas de riesgo</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Datos locales para revisión del frontend.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/datos.js"></script>
+  <script src="../js/zonas.js"></script>
+</body>
+</html>
