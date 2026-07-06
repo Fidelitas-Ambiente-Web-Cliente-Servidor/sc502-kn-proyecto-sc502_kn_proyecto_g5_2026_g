@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis reportes | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de ciudadano</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar mi reporte">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">María Rojas</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a class="active" href="mis-reportes.html">Mis Reportes</a>
+          <a href="nuevo-reporte.html">Nuevo Reporte</a>
+          <a href="notificaciones.html">Notificaciones</a>
+        </div>
+        <span class="nav-note">Reporte ciudadano</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Ciudadano · Mis reportes</span>
+        <h1>Mis reportes</h1>
+        <p>Consulte el estado de los focos de riesgo que ha reportado y dé seguimiento a cada caso hasta su resolución.</p>
+      </div>
+      <a class="btn btn-glow" href="nuevo-reporte.html">Nuevo Reporte</a>
+    </section>
+
+    <section id="resumenReportes" class="stats-grid reveal delay-1"></section>
+
+    <section class="card panel-card reveal delay-2">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Bandeja personal</span>
+            <h2>Reportes enviados</h2>
+            <p>Cada reporte incluye un código de seguimiento único y su estado más reciente.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroEstado">Estado</label>
+            <select id="filtroEstado">
+              <option value="todos">Todos</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Asignado">Asignado</option>
+              <option value="En atención">En atención</option>
+              <option value="Resuelto">Resuelto</option>
+              <option value="Rechazado">Rechazado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap smart-table">
+        <table id="tablaReportes">
+          <thead>
+            <tr>
+              <th>Caso</th>
+              <th>Tipo</th>
+              <th>Zona</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Módulo ciudadano con datos de prueba para el Avance 2.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="mis-reportes.html">Mis Reportes</a>
+        <a href="nuevo-reporte.html">Nuevo Reporte</a>
+        <a href="notificaciones.html">Notificaciones</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Datos locales para revisión del frontend.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/mis-reportes.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo reporte | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de ciudadano</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar mi reporte">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">María Rojas</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="mis-reportes.html">Mis Reportes</a>
+          <a class="active" href="nuevo-reporte.html">Nuevo Reporte</a>
+          <a href="notificaciones.html">Notificaciones</a>
+        </div>
+        <span class="nav-note">Reporte ciudadano</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Ciudadano · Nuevo reporte</span>
+        <h1>Reportar foco de riesgo</h1>
+        <p>Ubique el foco en el mapa, describa la situación y adjunte una fotografía si la tiene disponible. Recibirá un código de seguimiento al enviar el reporte.</p>
+      </div>
+      <a class="btn secondary" href="mis-reportes.html">Volver a mis reportes</a>
+    </section>
+
+    <section class="card panel-card reveal delay-1">
+      <div class="form-layout">
+        <form id="formReporte" novalidate class="action-form">
+          <div class="step-strip" aria-label="Pasos del reporte">
+            <span class="step active"><b>1</b> Ubicación</span>
+            <span class="step"><b>2</b> Descripción</span>
+            <span class="step"><b>3</b> Evidencia</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="tipoFoco">Tipo de foco</label>
+              <select id="tipoFoco" required>
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ubicacionTexto">Ubicación seleccionada</label>
+              <input type="text" id="ubicacionTexto" placeholder="Marque un punto en el mapa" readonly>
+            </div>
+
+            <div class="field full">
+              <label for="descripcionReporte">Descripción del foco de riesgo</label>
+              <textarea id="descripcionReporte" placeholder="Ejemplo: recipiente con agua estancada en el patio trasero de la vivienda." required></textarea>
+            </div>
+
+            <div class="field full upload-zone">
+              <label for="fotoReporte">Fotografía</label>
+              <input type="file" id="fotoReporte" accept="image/*">
+              <small id="archivoNombreReporte">Puede adjuntar una foto del foco de riesgo.</small>
+            </div>
+          </div>
+
+          <div id="mensajeForm" class="alert"></div>
+
+          <div class="actions-row form-actions">
+            <button class="btn btn-glow" type="submit">Enviar reporte</button>
+            <button class="btn secondary" type="reset">Limpiar</button>
+          </div>
+        </form>
+
+        <aside class="map-card sticky-card">
+          <div class="map-head">
+            <div>
+              <span class="eyebrow">Ubicar en el mapa</span>
+              <h2>Marque el punto exacto</h2>
+            </div>
+            <span class="map-chip">Leaflet</span>
+          </div>
+          <div id="mapaNuevoReporte"></div>
+          <div class="detail-card">
+            <p>Haga clic en el mapa para colocar el marcador sobre el foco de riesgo. Puede hacer clic nuevamente para ajustarlo.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Formulario de reporte ciudadano para el módulo de Valery.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="mis-reportes.html">Mis Reportes</a>
+        <a href="notificaciones.html">Notificaciones</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Los reportes se guardan localmente en el navegador.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/datos.js"></script>
+  <script src="../js/nuevo-reporte.js"></script>
+</body>
+</html>

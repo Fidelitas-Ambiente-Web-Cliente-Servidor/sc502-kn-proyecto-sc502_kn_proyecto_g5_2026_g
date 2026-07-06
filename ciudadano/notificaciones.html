@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificaciones | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel de ciudadano</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar mi reporte">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill">María Rojas</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="mis-reportes.html">Mis Reportes</a>
+          <a href="nuevo-reporte.html">Nuevo Reporte</a>
+          <a class="active" href="notificaciones.html">Notificaciones</a>
+        </div>
+        <span class="nav-note">Reporte ciudadano</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Ciudadano · Notificaciones</span>
+        <h1>Notificaciones</h1>
+        <p>Manténgase informado sobre los cambios de estado de sus reportes y las acciones tomadas por las brigadas.</p>
+      </div>
+      <button class="btn btn-glow" id="btnMarcarTodas" type="button">Marcar todas como leídas</button>
+    </section>
+
+    <section id="resumenNotificaciones" class="stats-grid reveal delay-1"></section>
+
+    <section class="card panel-card reveal delay-2">
+      <div class="section-title compact-title">
+        <div>
+          <span class="eyebrow">Centro de notificaciones</span>
+          <h2>Mis avisos</h2>
+          <p>Las notificaciones no leídas aparecen resaltadas.</p>
+        </div>
+      </div>
+
+      <div id="listaNotificaciones" class="notif-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Centro de notificaciones del módulo de Valery.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="mis-reportes.html">Mis Reportes</a>
+        <a href="nuevo-reporte.html">Nuevo Reporte</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>El estado de lectura se guarda localmente en el navegador.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/notificaciones.js"></script>
+</body>
+</html>

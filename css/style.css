@@ -1137,3 +1137,60 @@ thead th {
 .reveal {
   animation: none;
 }
+
+/* Notificaciones (módulo de Valery) */
+.notif-list {
+  display: grid;
+  gap: 14px;
+}
+
+.notif-card {
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-left: 5px solid var(--linea);
+  border-radius: 14px;
+  transition: .18s ease;
+}
+
+.notif-card.unread {
+  border-left-color: var(--azul);
+  background: var(--azul-suave);
+}
+
+.notif-card.read {
+  opacity: .78;
+}
+
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.notif-fecha {
+  color: var(--muted);
+  font-size: .84rem;
+  font-weight: 700;
+}
+
+.notif-card p {
+  margin: 0 0 8px;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.notif-card small {
+  color: var(--muted);
+}
+
+/* Mapa de nuevo reporte (módulo de Valery) */
+#mapaNuevoReporte {
+  min-height: 310px;
+  border-radius: 16px;
+  border: 1px solid var(--linea);
+  overflow: hidden;
+  background: #e9f3ff;
+}
