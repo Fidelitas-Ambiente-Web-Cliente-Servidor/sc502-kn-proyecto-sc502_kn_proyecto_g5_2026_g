@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios | DengueReporte CR</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="gov-strip">
+      <div class="container">
+        <div class="gov-left">
+          <a class="gov-link" href="../index.html">Ministerio de Salud</a>
+          <span>|</span>
+          <a class="gov-link" href="../index.html">DengueReporte CR</a>
+        </div>
+        <div class="gov-right">
+          <span class="access-size">A- A A+</span>
+          <a class="gov-link" href="../index.html">Salir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">
+          <strong>DengueReporte CR</strong>
+          <small>Panel administrativo</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <form class="search-box" onsubmit="return false">
+          <input type="search" placeholder="Buscar usuario por nombre o correo">
+          <button type="submit">Buscar</button>
+        </form>
+        <span class="status-pill" id="usuarioActivo">Admin Salud</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links">
+          <a href="../index.html">Inicio</a>
+          <a href="dashboard.html">Panel general</a>
+          <a class="active" href="usuarios.html">Usuarios</a>
+          <a href="estadisticas.html">Estadísticas</a>
+        </div>
+        <span class="nav-note">Gestión de usuarios</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section page-shell">
+    <section class="page-hero reveal">
+      <div>
+        <span class="tag">Administrador · Gestión de usuarios</span>
+        <h1>Usuarios del sistema</h1>
+        <p>Consultá los usuarios registrados en la plataforma, filtrá por rol y verificá su estado de actividad.</p>
+      </div>
+    </section>
+
+    <section id="resumenUsuarios" class="stats-grid reveal delay-1"></section>
+
+    <section class="card panel-card reveal delay-2">
+      <div class="tool-strip">
+        <div class="section-title compact-title">
+          <div>
+            <span class="eyebrow">Directorio</span>
+            <h2>Listado de usuarios</h2>
+            <p>Filtrá por rol para revisar ciudadanos, brigadistas, inspectores o administradores.</p>
+          </div>
+        </div>
+
+        <div class="filters filters-inline">
+          <div class="field compact-field">
+            <label for="filtroRol">Rol</label>
+            <select id="filtroRol">
+              <option value="todos">Todos</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap smart-table">
+        <table id="tablaUsuarios">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th>Zona</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DengueReporte CR</h3>
+        <p>Gestión de usuarios para el módulo de autenticación y administración.</p>
+      </div>
+      <div>
+        <h4>Accesos</h4>
+        <a href="dashboard.html">Panel general</a>
+        <a href="usuarios.html">Usuarios</a>
+        <a href="estadisticas.html">Estadísticas</a>
+      </div>
+      <div>
+        <h4>Estado</h4>
+        <p>Datos locales para revisión del frontend.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/usuarios.js"></script>
+</body>
+</html>
