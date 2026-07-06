@@ -663,6 +663,13 @@ tbody tr:hover, tbody tr.selected {
 .badge.en-atencion { background: #d0ebff; color: #0b4f7a; }
 .badge.rechazado { background: #e9ecef; color: #495057; }
 
+/* Badges de usuarios y roles (módulo de Allison) */
+.badge.activo { background: #d3f9d8; color: #17602c; }
+.badge.inactivo { background: #e9ecef; color: #495057; }
+.badge.brigadista { background: #fff3bf; color: #7c4a00; }
+.badge.inspector { background: #d0ebff; color: #0b4f7a; }
+.badge.administrador { background: #ffe3e3; color: #9b1c1c; }
+
 .map-card, .detail-card, .case-preview, .chart-card, .insight-card {
   background: #fff;
   border: 1px solid var(--linea);
