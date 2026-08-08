@@ -1,0 +1,4 @@
+.env
+public/uploads/acciones/*
+!public/uploads/acciones/.gitkeep
+.DS_Store

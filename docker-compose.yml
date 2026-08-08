@@ -1,0 +1,49 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      APP_ENV: local
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: dengue_reporte
+      DB_USER: appuser
+      DB_PASS: apppass
+    volumes:
+      - ./:/var/www/html
+    command: >
+      sh -c "mkdir -p /var/www/html/public/uploads/acciones
+      && chown -R www-data:www-data /var/www/html/public/uploads
+      && apache2-foreground"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: dengue_reporte
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: db
+      PMA_USER: appuser
+      PMA_PASSWORD: apppass
+    depends_on:
+      - db
+
+volumes:
+  db_data:

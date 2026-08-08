@@ -1,0 +1,80 @@
+.mvc-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, .85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.mvc-login-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.mvc-login-card {
+  width: 100%;
+}
+
+.mvc-login-card .btn {
+  align-self: flex-start;
+  min-width: 140px;
+}
+
+.mvc-login-hero {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mvc-home-actions {
+  margin-top: 24px;
+}
+
+.mvc-section-heading {
+  margin: 28px 0 12px;
+}
+
+.mvc-section-heading h2 {
+  margin-top: 6px;
+}
+
+.mvc-map {
+  width: 100%;
+  min-height: 390px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mvc-section-space {
+  margin-top: 22px;
+}
+
+.mvc-actions-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mvc-module-grid {
+  margin-top: 18px;
+}
+
+.mvc-hero {
+  margin-bottom: 22px;
+}
+
+.footer-simple {
+  margin-top: 36px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,0,0,.08);
+  color: #667085;
+}
+
+.flash {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .mvc-two-col {
+    grid-template-columns: 1fr;
+  }
+}
