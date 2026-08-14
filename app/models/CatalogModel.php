@@ -14,4 +14,11 @@ class CatalogModel
              ORDER BY z.nombre"
         )->fetchAll();
     }
+
+    public function tiposFoco(): array
+    {
+        return $this->db->query(
+            "SELECT id, nombre FROM tipos_foco ORDER BY nombre"
+        )->fetchAll();
+    }
 }

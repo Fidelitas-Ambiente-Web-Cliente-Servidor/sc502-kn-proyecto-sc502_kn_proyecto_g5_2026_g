@@ -48,7 +48,9 @@ $currentController = strtolower($_GET['controller'] ?? 'home');
         <?php if (!$user && $currentController !== 'auth'): ?>
           <a href="<?= url('auth', 'login') ?>">Iniciar sesión</a>
         <?php elseif ($role === 'ciudadano'): ?>
-          <a href="<?= legacy_url('ciudadano/mis-reportes.html') ?>">Mis reportes</a>
+          <a href="<?= url('ciudadano', 'misReportes') ?>">Mis reportes</a>
+          <a href="<?= url('ciudadano', 'nuevoReporte') ?>">Nuevo reporte</a>
+          <a href="<?= url('ciudadano', 'notificaciones') ?>">Notificaciones</a>
         <?php elseif ($role === 'brigadista'): ?>
           <a href="<?= url('brigadista', 'asignaciones') ?>">Mis asignaciones</a>
         <?php elseif ($role === 'inspector'): ?>

@@ -38,6 +38,8 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:latest
+    ports:
+      - "8082:80"
     environment:
       PMA_HOST: db
       PMA_USER: appuser
