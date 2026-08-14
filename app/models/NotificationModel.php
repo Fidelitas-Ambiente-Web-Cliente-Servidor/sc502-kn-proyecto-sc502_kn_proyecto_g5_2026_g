@@ -17,4 +17,35 @@ class NotificationModel
             'mensaje' => $mensaje,
         ]);
     }
+
+    public function forUser(int $usuarioId): array
+    {
+        $sql = "
+            SELECT n.id, n.reporte_id, n.mensaje, n.leida, n.fecha, r.codigo
+            FROM notificaciones n
+            LEFT JOIN reportes r ON r.id = n.reporte_id
+            WHERE n.usuario_id = :usuario
+            ORDER BY n.fecha DESC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['usuario' => $usuarioId]);
+        return $stmt->fetchAll();
+    }
+
+    public function markRead(int $id, int $usuarioId): void
+    {
+        $stmt = $this->db->prepare(
+            "UPDATE notificaciones SET leida = 1 WHERE id = :id AND usuario_id = :usuario"
+        );
+        $stmt->execute(['id' => $id, 'usuario' => $usuarioId]);
+    }
+
+    public function markAllRead(int $usuarioId): void
+    {
+        $stmt = $this->db->prepare(
+            "UPDATE notificaciones SET leida = 1 WHERE usuario_id = :usuario"
+        );
+        $stmt->execute(['usuario' => $usuarioId]);
+    }
 }

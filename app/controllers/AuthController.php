@@ -54,8 +54,7 @@ class AuthController extends Controller
     {
         switch (Auth::role()) {
             case 'ciudadano':
-                header('Location: ' . legacy_url('ciudadano/mis-reportes.html'));
-                exit;
+                $this->redirect('ciudadano', 'misReportes');
             case 'brigadista':
                 $this->redirect('brigadista', 'asignaciones');
             case 'inspector':
