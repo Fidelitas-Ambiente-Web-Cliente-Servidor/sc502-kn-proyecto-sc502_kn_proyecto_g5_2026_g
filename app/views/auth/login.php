@@ -36,5 +36,10 @@
     </div>
 
     <button class="btn btn-glow" type="submit">Ingresar</button>
+
+    <div class="mvc-login-links" style="display:flex; justify-content:space-between; margin-top:10px;">
+      <a href="<?= url('auth', 'register') ?>">Crear cuenta</a>
+      <a href="<?= url('auth', 'forgotPassword') ?>">¿Olvidó su contraseña?</a>
+    </div>
   </form>
 </section>

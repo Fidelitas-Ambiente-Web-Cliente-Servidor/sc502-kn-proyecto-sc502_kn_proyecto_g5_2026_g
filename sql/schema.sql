@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS dengue_reporte CHARACTER SET utf8mb4 COLLATE utf8m
 USE dengue_reporte;
 
 SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS password_resets;
 DROP TABLE IF EXISTS historial_reportes;
 DROP TABLE IF EXISTS notificaciones;
 DROP TABLE IF EXISTS acciones_campo;
@@ -47,6 +48,17 @@ CREATE TABLE usuarios (
   fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT fk_usuario_rol FOREIGN KEY (rol_id) REFERENCES roles(id),
   CONSTRAINT fk_usuario_zona FOREIGN KEY (zona_id) REFERENCES zonas(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE password_resets (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  token_hash VARCHAR(255) NOT NULL,
+  fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  fecha_expiracion DATETIME NOT NULL,
+  usado TINYINT(1) NOT NULL DEFAULT 0,
+  CONSTRAINT fk_reset_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+  INDEX idx_reset_usuario(usuario_id, usado)
 ) ENGINE=InnoDB;
 
 CREATE TABLE tipos_foco (

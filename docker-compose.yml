@@ -2,7 +2,7 @@ services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       APP_ENV: local
       DB_HOST: db

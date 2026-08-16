@@ -55,6 +55,7 @@ $currentController = strtolower($_GET['controller'] ?? 'home');
           <a href="<?= url('brigadista', 'asignaciones') ?>">Mis asignaciones</a>
         <?php elseif ($role === 'inspector'): ?>
           <a href="<?= legacy_url('inspector/bandeja.html') ?>">Gestión de casos</a>
+          <a href="<?= url('inspector', 'zonas') ?>">Zonas de riesgo</a>
         <?php elseif ($role === 'administrador'): ?>
           <a href="<?= legacy_url('admin/dashboard.html') ?>">Panel administrativo</a>
           <a href="<?= url('estadisticas', 'index') ?>">Estadísticas</a>

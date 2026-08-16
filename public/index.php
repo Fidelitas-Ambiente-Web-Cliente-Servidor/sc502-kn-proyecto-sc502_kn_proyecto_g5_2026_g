@@ -27,6 +27,7 @@ $map = [
     'brigadista' => BrigadistaController::class,
     'estadisticas' => EstadisticasController::class,
     'ciudadano' => CiudadanoController::class,
+    'inspector' => InspectorController::class,
 ];
 
 if (!isset($map[$controllerName])) {
