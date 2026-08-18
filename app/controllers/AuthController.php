@@ -195,8 +195,7 @@ class AuthController extends Controller
             case 'brigadista':
                 $this->redirect('brigadista', 'asignaciones');
             case 'inspector':
-                header('Location: ' . legacy_url('inspector/bandeja.html'));
-                exit;
+                $this->redirect('inspector', 'casos');
             case 'administrador':
                 $this->redirect('estadisticas', 'index');
             default:

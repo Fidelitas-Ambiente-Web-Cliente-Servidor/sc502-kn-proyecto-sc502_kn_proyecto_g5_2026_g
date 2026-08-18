@@ -18,7 +18,7 @@ class HomeController extends Controller
                     $moduleLabel = 'Ir a mis asignaciones';
                     break;
                 case 'inspector':
-                    $moduleUrl = legacy_url('inspector/bandeja.html');
+                    $moduleUrl = url('inspector', 'casos');
                     $moduleLabel = 'Ir a gestión de casos';
                     break;
                 case 'administrador':
